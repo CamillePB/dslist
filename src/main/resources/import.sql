@@ -1,3 +1,44 @@
+CREATE DATABASE db_dslist;
+
+Use db_dslist;
+
+create table tb_belonging (
+       position integer,
+        list_id bigint not null,
+        game_id bigint not null,
+        primary key (game_id, list_id)
+    );
+    
+     create table tb_game (
+       id bigint auto_increment,
+        genre varchar(255),
+        img_url varchar(255),
+        long_description TEXT,
+        platforms varchar(255),
+        score float(53),
+        short_description TEXT,
+        title varchar(255),
+        game_year integer,
+        primary key (id)
+    );
+    
+    create table tb_game_list (
+       id bigint auto_increment,
+        name varchar(255),
+        primary key (id)
+    );
+    
+  ALTER TABLE tb_belonging
+    ADD CONSTRAINT FKrchwdikeu66uky1hf75ym1kh
+    FOREIGN KEY (list_id)
+    REFERENCES tb_game_list (id);
+
+ALTER TABLE tb_belonging
+    ADD CONSTRAINT FK2slybclee7wdfxhfltbvqkgpg
+    FOREIGN KEY (game_id)
+    REFERENCES tb_game (id);
+
+    
 INSERT INTO tb_game_list (name) VALUES ('Aventura e RPG');
 INSERT INTO tb_game_list (name) VALUES ('Jogos de plataforma');
 
